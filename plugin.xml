@@ -1,0 +1,20 @@
+<library path="src">
+  <class name="Controls" type="rqt_controls.rqt_controls.Controls" base_class_type="rqt_gui_py::Plugin">
+    <description>
+      A Plugin to steer our Robot
+    </description>
+    <qtgui>
+      <!-- optional grouping...
+      <group>
+        <label>Group</label>
+      </group>
+      <group>
+        <label>Subgroup</label>
+      </group>
+      -->
+      <label>Robot Controlsn</label>
+      <icon type="theme">system-help</icon>
+      <statustip>Great user interface for Robot controls.</statustip>
+    </qtgui>
+  </class>
+</library>
