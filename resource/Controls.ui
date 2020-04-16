@@ -45,7 +45,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="BatteryLabel">
    <property name="geometry">
     <rect>
      <x>210</x>
