@@ -1,4 +1,4 @@
-import os
+from os import path
 import rospy
 import rosnode
 import rospkg
@@ -17,7 +17,7 @@ class Controls(Plugin):
         # Create QWidget
         self._widget = QWidget()
         # Get path to UI file which should be in the "resource" folder of this package
-        _ui_file = os.path.join(rospkg.RosPack().get_path('rqt_controls'), 'resource', 'Controls.ui')
+        _ui_file = path.join(rospkg.RosPack().get_path('rqt_controls'), 'resource', 'Controls.ui')
         # Extend the widget with all attributes and children from UI file
         self._ui = loadUi(_ui_file, self._widget)
 
