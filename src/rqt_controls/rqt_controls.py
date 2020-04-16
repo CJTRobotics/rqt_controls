@@ -1,5 +1,6 @@
 import os
 import rospy
+import rosnode
 import rospkg
 
 from qt_gui.plugin import Plugin
@@ -54,4 +55,4 @@ class Controls(Plugin):
         # Usually used to open a modal configuration dialog
 
     def onKillnode(self):
-        os.system("rosnode kill skid_steering_node")
+        rosnode.kill_nodes("skid_steering_node")
