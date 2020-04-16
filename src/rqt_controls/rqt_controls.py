@@ -21,7 +21,7 @@ class Controls(Plugin):
         # Extend the widget with all attributes and children from UI file
         self._ui = loadUi(_ui_file, self._widget)
 
-        self._ui.button_killnode.clicked.connect(self.onKillnode)
+        self._ui.ButtonKillnode.clicked.connect(self.onKillnode)
 
         # Give QObjects reasonable names
         self._widget.setObjectName('ControlsUi')

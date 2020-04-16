@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="button_killnode">
+  <widget class="QPushButton" name="ButtonKillnode">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -35,7 +35,7 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLCDNumber" name="batteryPanel">
+  <widget class="QLCDNumber" name="BatteryPanel">
    <property name="geometry">
     <rect>
      <x>210</x>
