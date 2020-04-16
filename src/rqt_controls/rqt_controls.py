@@ -16,31 +16,31 @@ class Controls(Plugin):
         # Create QWidget
         self._widget = QWidget()
         # Get path to UI file which should be in the "resource" folder of this package
-        ui_file = os.path.join(rospkg.RosPack().get_path('rqt_controls'), 'resource', 'Controls.ui')
+        _ui_file = os.path.join(rospkg.RosPack().get_path('rqt_controls'), 'resource', 'Controls.ui')
         # Extend the widget with all attributes and children from UI file
-        self.ui = loadUi(ui_file, self._widget)
-        
-        self.ui.button_killnode.clicked.connect(self.onKillnode)
-        if self.ui.check_steering.checkState():
+        self._ui = loadUi(_ui_file, self._widget)
+
+        self._ui.button_killnode.clicked.connect(self.onKillnode)
+        if self._ui.check_steering.checkState():
             #roslaunch skid_steering node
             pass
         else:
             #deactivate skid_steering
              os.system("rosnode kill skid_steering_node")
-        
-        if self.ui.check_camera.checkState():
-            #start camera 
+
+        if self._ui.check_camera.checkState():
+            #start camera
             pass
-        else: 
+        else:
             #deactivate camera
             pass
-        
+
         # Give QObjects reasonable names
         self._widget.setObjectName('ControlsUi')
-        # Show _widget.windowTitle on left-top of each plugin (when 
-        # it's set in _widget). This is useful when you open multiple 
-        # plugins at once. Also if you open multiple instances of your 
-        # plugin at once, these lines add number to make it easy to 
+        # Show _widget.windowTitle on left-top of each plugin (when
+        # it's set in _widget). This is useful when you open multiple
+        # plugins at once. Also if you open multiple instances of your
+        # plugin at once, these lines add number to make it easy to
         # tell from pane to pane.
         if context.serial_number() > 1:
             self._widget.setWindowTitle(self._widget.windowTitle() + (' (%d)' % context.serial_number()))
@@ -65,6 +65,6 @@ class Controls(Plugin):
         # Comment in to signal that the plugin has a way to configure
         # This will enable a setting button (gear icon) in each dock widget title bar
         # Usually used to open a modal configuration dialog
-        
+
     def onKillnode(self):
         os.system("rosnode kill skid_steering_node")
