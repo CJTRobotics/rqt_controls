@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>269</width>
-    <height>132</height>
+    <width>371</width>
+    <height>257</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QPushButton" name="button_killnode">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>98</width>
-     <height>27</height>
+     <x>10</x>
+     <y>10</y>
+     <width>131</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -35,30 +35,27 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QCheckBox" name="check_steering">
+  <widget class="QLCDNumber" name="batteryPanel">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>70</y>
-     <width>88</width>
-     <height>22</height>
+     <x>210</x>
+     <y>50</y>
+     <width>141</width>
+     <height>61</height>
     </rect>
-   </property>
-   <property name="text">
-    <string>Steering</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="check_camera">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>88</width>
-     <height>22</height>
+     <x>210</x>
+     <y>20</y>
+     <width>141</width>
+     <height>27</height>
     </rect>
    </property>
    <property name="text">
-    <string>Camera</string>
+    <string>Battery Voltage</string>
    </property>
   </widget>
  </widget>
