@@ -21,19 +21,6 @@ class Controls(Plugin):
         self._ui = loadUi(_ui_file, self._widget)
 
         self._ui.button_killnode.clicked.connect(self.onKillnode)
-        if self._ui.check_steering.checkState():
-            #roslaunch skid_steering node
-            pass
-        else:
-            #deactivate skid_steering
-             os.system("rosnode kill skid_steering_node")
-
-        if self._ui.check_camera.checkState():
-            #start camera
-            pass
-        else:
-            #deactivate camera
-            pass
 
         # Give QObjects reasonable names
         self._widget.setObjectName('ControlsUi')
