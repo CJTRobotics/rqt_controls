@@ -1,4 +1,5 @@
 from os import path
+from sensor_msgs.msg import ChannelFloat32
 import rospy
 import rosnode
 import rospkg
@@ -36,9 +37,16 @@ class Controls(Plugin):
         # Add widget to the user interface
         context.add_widget(self._widget)
 
+        self._ui.BatteryPanel.display(999.9)
+        self.motor_stats = rospy.Subscriber("skid_steering_node/motor_stats", ChannelFloat32, self.callback)
+
     def shutdown_plugin(self):
-        # TODO unregister all publishers here
-        pass
+        self.motor_stats.unregister()
 
     def onKillnode(self):
+        self.motor_stats.unregister()
         rosnode.kill_nodes("skid_steering_node")
+
+    def callback(self, msg):
+        battery_voltage = round(msg.values[0], 2)
+        self._ui.BatteryPanel.display(battery_voltage)
