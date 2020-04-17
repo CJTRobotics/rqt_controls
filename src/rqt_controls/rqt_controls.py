@@ -25,6 +25,7 @@ class Controls(Plugin):
 
         # Give QObjects reasonable names
         self._widget.setObjectName('ControlsUi')
+        self._widget.setWindowTitle("Robot Controls")
         # Show _widget.windowTitle on left-top of each plugin (when
         # it's set in _widget). This is useful when you open multiple
         # plugins at once. Also if you open multiple instances of your
