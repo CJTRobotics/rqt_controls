@@ -6,7 +6,8 @@ import rospkg
 
 from qt_gui.plugin import Plugin
 from python_qt_binding import loadUi
-from python_qt_binding.QtWidgets import QWidget
+from python_qt_binding.QtWidgets import QWidget, QTableWidgetItem
+from python_qt_binding.QtGui import QColor
 
 class Controls(Plugin):
 
@@ -23,6 +24,10 @@ class Controls(Plugin):
         self._ui = loadUi(_ui_file, self._widget)
 
         self._ui.ButtonKillnode.clicked.connect(self.onKillnode)
+
+        for i in range(0, 3):
+            self._ui.MotorTable.setItem(0, i, QTableWidgetItem())
+            self._ui.MotorTable.setItem(1, i, QTableWidgetItem())
 
         # Give QObjects reasonable names
         self._widget.setObjectName('ControlsUi')
@@ -50,3 +55,27 @@ class Controls(Plugin):
     def callback(self, msg):
         battery_voltage = round(msg.values[0], 2)
         self._ui.BatteryPanel.display(battery_voltage)
+        self.calc_load(msg.values)
+
+    def calc_load(self, values):
+        vel_left = 10*abs(values[1])
+        vel_right = 10*abs(values[2])
+        i = 0
+        for rpm in range (4, 9, 2):
+            if vel_right != 0:
+                load = abs(values[rpm])/vel_right
+                self._ui.MotorTable.item(0, i).setBackground(self.color(load))
+            else:
+                self._ui.MotorTable.item(0, i).setBackground(QColor(125, 125, 125))
+            i = i+1
+        i = 0
+        for rpm in range (3, 9, 2):
+            if vel_left != 0:
+                load = abs(values[rpm])/vel_left
+                self._ui.MotorTable.item(1, i).setBackground(self.color(load))
+            else:
+                self._ui.MotorTable.item(1, i).setBackground(QColor(125, 125, 125))
+            i = i+1
+
+    def color(self, load):
+        return QColor(125/load, 125*load, 0)

@@ -38,7 +38,7 @@
   <widget class="QLCDNumber" name="BatteryPanel">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>260</x>
      <y>40</y>
      <width>141</width>
      <height>61</height>
@@ -48,7 +48,7 @@
   <widget class="QLabel" name="BatteryLabel">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>260</x>
      <y>10</y>
      <width>141</width>
      <height>27</height>
@@ -61,7 +61,7 @@
   <widget class="QLabel" name="MotorLabel">
    <property name="geometry">
     <rect>
-     <x>34</x>
+     <x>30</x>
      <y>80</y>
      <width>201</width>
      <height>27</height>
@@ -71,15 +71,77 @@
     <string>Motor workload</string>
    </property>
   </widget>
-  <widget class="QTableView" name="MotorTable">
+  <widget class="QTableWidget" name="MotorTable">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>120</y>
+     <y>110</y>
      <width>381</width>
      <height>192</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>381</width>
+     <height>192</height>
+    </size>
+   </property>
+   <property name="baseSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::NoEditTriggers</set>
+   </property>
+   <property name="showDropIndicator" stdset="0">
+    <bool>false</bool>
+   </property>
+   <property name="alternatingRowColors">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>4</width>
+     <height>4</height>
+    </size>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
+   </property>
+   <property name="rowCount">
+    <number>2</number>
+   </property>
+   <property name="columnCount">
+    <number>3</number>
+   </property>
+   <attribute name="horizontalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="horizontalHeaderMinimumSectionSize">
+    <number>62</number>
+   </attribute>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>125</number>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderMinimumSectionSize">
+    <number>47</number>
+   </attribute>
+   <attribute name="verticalHeaderDefaultSectionSize">
+    <number>94</number>
+   </attribute>
+   <row/>
+   <row/>
+   <column/>
+   <column/>
+   <column/>
   </widget>
  </widget>
  <resources/>
