@@ -53,7 +53,7 @@ class Controls(Plugin):
         rosnode.kill_nodes("skid_steering_node")
 
     def callback(self, msg):
-        battery_voltage = round(msg.values[0], 2)
+        battery_voltage = round(msg.values[0], 1)
         self._ui.BatteryPanel.display(battery_voltage)
         self.calc_load(msg.values)
 
