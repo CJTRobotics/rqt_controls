@@ -53,8 +53,7 @@ class Controls(Plugin):
         rosnode.kill_nodes("skid_steering_node")
 
     def callback(self, msg):
-        battery_voltage = round(msg.values[0], 1)
-        self._ui.BatteryPanel.display(battery_voltage)
+        self.display_voltage(msg.values[0])
         rpm = msg.values[3:9]
         #Left wheels
         self.set_color([rpm[0], rpm[2], rpm[4]], msg.values[1], 1)
@@ -89,3 +88,6 @@ class Controls(Plugin):
         else:
             for i in range(0, 3):
                 self._ui.MotorTable.item(row, i).setBackground(QColor(125, 125, 125))
+
+    def display_voltage(self, battery_voltage):
+        self._ui.BatteryPanel.display("%.1f" % battery_voltage)
