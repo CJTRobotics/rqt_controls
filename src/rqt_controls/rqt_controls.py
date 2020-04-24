@@ -55,27 +55,37 @@ class Controls(Plugin):
     def callback(self, msg):
         battery_voltage = round(msg.values[0], 1)
         self._ui.BatteryPanel.display(battery_voltage)
-        self.calc_load(msg.values)
+        rpm = msg.values[3:9]
+        #Left wheels
+        self.set_color([rpm[0], rpm[2], rpm[4]], msg.values[1], 1)
+        #Right wheels
+        self.set_color([rpm[1], rpm[3], rpm[5]], msg.values[2], 0)
 
-    def calc_load(self, values):
-        vel_left = 10*abs(values[1])
-        vel_right = 10*abs(values[2])
-        i = 0
-        for rpm in range (4, 9, 2):
-            if vel_right != 0:
-                load = abs(values[rpm])/vel_right
-                self._ui.MotorTable.item(0, i).setBackground(self.color(load))
-            else:
-                self._ui.MotorTable.item(0, i).setBackground(QColor(125, 125, 125))
-            i = i+1
-        i = 0
-        for rpm in range (3, 9, 2):
-            if vel_left != 0:
-                load = abs(values[rpm])/vel_left
-                self._ui.MotorTable.item(1, i).setBackground(self.color(load))
-            else:
-                self._ui.MotorTable.item(1, i).setBackground(QColor(125, 125, 125))
-            i = i+1
+    def color(self, vel, rpm):
+        if rpm != 0:
+            load = vel/rpm
+        else:
+            load = 100
+        print("Load: " + str(load) + " VEL: " + str(vel) + " RPM: " + str(rpm) + "\n")
+        if load > 1.5:
+            return QColor(255, 0, 0)
+        elif load > 1.3:
+            #Dunkelorange
+            return QColor(255, 100, 0)
+        elif load > 1.1:
+            #Hellorange
+            return QColor(240, 165, 0)
+        elif load >= 0:
+            return QColor(0, 125, 0)
+        else:
+            #Negative Werte -> Rot
+            return QColor(225, 0, 0)
 
-    def color(self, load):
-        return QColor(125/load, 125*load, 0)
+    def set_color(self, rpms, vel, row):
+        if vel != 0:
+            vel *= 100
+            for i in range(0, 3):
+                self._ui.MotorTable.item(row, i).setBackground(self.color(vel, rpms[i]))
+        else:
+            for i in range(0, 3):
+                self._ui.MotorTable.item(row, i).setBackground(QColor(125, 125, 125))
