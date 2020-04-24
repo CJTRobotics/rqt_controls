@@ -59,6 +59,13 @@ class Controls(Plugin):
         self.set_color([rpm[0], rpm[2], rpm[4]], msg.values[1], 1)
         #Right wheels
         self.set_color([rpm[1], rpm[3], rpm[5]], msg.values[2], 0)
+        for i in range(0, 6):
+            if i%2 == 0:
+                #Left wheels
+                self._ui.MotorTable.item(1, i/2).setText("%2d" % rpm[i])
+            else:
+                #Right wheels.setData(rpm[i]
+                self._ui.MotorTable.item(0, i//2).setText("%2d" % rpm[i])
 
     def color(self, vel, rpm):
         if rpm != 0:
