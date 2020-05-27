@@ -50,7 +50,7 @@ class Controls(Plugin):
 
     def onKillnode(self):
         self.motor_stats.unregister()
-        rosnode.kill_nodes("skid_steering_node")
+        rosnode.kill_nodes(["skid_steering_node"])
 
     def callback(self, msg):
         self.display_voltage(msg.values[0])
