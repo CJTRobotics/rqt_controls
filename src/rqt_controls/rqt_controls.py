@@ -72,7 +72,6 @@ class Controls(Plugin):
             load = vel/rpm
         else:
             load = 100
-        print("Load: " + str(load) + " VEL: " + str(vel) + " RPM: " + str(rpm) + "\n")
         if load > 1.5:
             return QColor(255, 0, 0)
         elif load > 1.3:
